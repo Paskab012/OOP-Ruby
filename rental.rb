@@ -3,8 +3,8 @@ class Rental
     @data = data
     @person = person
     @book = book
-    person.rental << self
-    book.rental << self
+    person.rentals << self
+    book.rentals << self
   end
 
   attr_accessor :date, :book, :person
