@@ -23,9 +23,9 @@ class Main
   loop do
     case home_page
     when 1
-      app.booklist
+      app.all_booklist
     when 2
-      app.peoplelist
+      app.all_peoplelist
     when 3
       app.create_person
     when 4
