@@ -20,7 +20,7 @@ class App
 
   def all_peoplelist
     puts 'No people found!' if @people.empty?
-    @people.each { |person| puts "[#{person.class}], Name: #{person.name}, Age: #{person.age}, Id: #{person.id}" }
+    @people.each { |person| puts "[#{person.class}], Age: #{person.name}, Name: #{person.age}, Id: #{person.id}" }
   end
 
   def create_person
@@ -57,13 +57,17 @@ class App
     print 'student age: '
     age = gets.chomp
 
-    print ' Parent permission [Yes or No]: '
+    print 'student name: '
+    name = gets.chomp
+
+    print 'Parent permission [Yes or No]: '
     parent_permission = gets.chomp.downcase
+
     case parent_permission
-    when 'No'
+    when 'no'
       student = Student.new(age, name, parent_permission: false)
       @people.push(student)
-    when 'Yes'
+    when 'yes'
       student = Student.new(age, name, parent_permission: true)
       @people.push(student)
     end
