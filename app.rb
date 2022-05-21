@@ -19,6 +19,11 @@ class App
   end
 
   def all_peoplelist
+    puts 'No people found!' if @people.empty?
+    @people.each { |person| puts "[#{person.class}], Name: #{person.name}, Age: #{person.age}, Id: #{person.id}" }
+  end
+
+  def create_person
     print 'Missing student or teacher? create student (1) or a teacher (2)
         [Input the number]: '
     option = gets.chomp
@@ -30,14 +35,14 @@ class App
     else
       puts 'invalid input'
     end
-    puts 'People created successfully'
+    puts 'Person created successfully'
   end
 
   def create_teacher
     print 'teacher age: '
     age = gets.chomp
 
-    print 'teacher specialization'
+    print 'teacher specialization: '
     specialization = gets.chomp
 
     print 'teacher name: '
