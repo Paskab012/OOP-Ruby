@@ -1,7 +1,6 @@
 require_relative './book'
 require_relative './per_son'
 
-
 class Rental
   def initialize(date, book, person)
     @date = date
