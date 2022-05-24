@@ -6,5 +6,4 @@ class Book
   end
 
   attr_accessor :title, :author, :rentals
-
 end
