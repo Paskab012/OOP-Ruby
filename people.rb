@@ -1,5 +1,5 @@
 equire './per_son'
-require './data'
+require './initialize'
 require 'json'
 
 class Mypeople

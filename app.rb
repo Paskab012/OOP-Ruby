@@ -1,35 +1,77 @@
-require './book'
+require './books'
 require './classroom'
 require './per_son'
 require './rental'
 require './student'
 require './teacher'
+require './people'
+require './book_rentals'
 
 class App
   def initialize
-    @books = []
-    @people = []
-    @rentals = []
+    @books = Books.new
+    @people = Mypeople.new
+    @rentals = BookRentals.new(@books.books, @people.people)
   end
 
-  def all_booklist
-    puts 'There is no book found in the store' if
-    @books.empty?
-    @books.each { |book| puts "Title: #{book.title}, Author: #{book.author}" }
+
+  def start
+    home
   end
 
-  def create_book
-    print 'book title: '
-    title = gets.chomp
-
-    print 'book author: '
-    author = gets.chomp
-
-    book = Book.new(title, author)
-    @books.push(book)
-
-    puts 'New book item was successfully created'
+  def landing
+    puts ''
+    puts "Please select a number:
+                1. List all books
+                2. List all people
+                3. Create person account
+                4. Create a book
+                5. Create a rental
+                6. List all rentals for a given person ID
+                7. Exit"
+    gets.chomp
   end
+
+  def home
+    case landing
+    when '1'
+      @books.all_booklist
+    when '2'
+      @people.all_peoplelist
+    when '3'
+      @people.create_person
+    when '4'
+      @books.create_book
+    when '5'
+      @rentals.create_rental
+    when '6'
+
+      @rentals.rentalslist
+
+    when '7'
+
+      puts 'Session closed! Ciao ciao!'
+
+      exit
+
+    else
+
+      puts 'Oups! something went wrong! Input your correct credentials please...'
+
+    end
+    home
+  end
+end
+
+
+
+
+
+
+
+
+
+  
 
   def create_rental
     if @books.size.zero?
