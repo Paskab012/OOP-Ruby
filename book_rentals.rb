@@ -51,7 +51,7 @@ class BookRentals
 
       individual = @people.select { |person| person.id == identity }.first
 
-      print 'Enter the date[yyyy-mm-dd]: '
+      print 'Enter date[yyyy-mm-dd]: '
       date = gets.chomp.to_s
 
       rent = Rental.new(date, @books[index], individual)
