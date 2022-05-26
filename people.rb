@@ -1,4 +1,4 @@
-equire './per_son'
+require './per_son'
 require './initialize'
 require 'json'
 
