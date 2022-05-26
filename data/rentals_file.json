@@ -1,0 +1,30 @@
+[
+  {
+    "date": "2020-02-02",
+    "id": 859,
+    "borrower": "j",
+    "book": "book1",
+    "author": "autor1"
+  },
+  {
+    "date": "2020-03-03",
+    "id": 776,
+    "borrower": "j",
+    "book": "book1",
+    "author": "autor1"
+  },
+  {
+    "date": "2020-2-2",
+    "id": 286,
+    "borrower": "j",
+    "book": "book1",
+    "author": "autor1"
+  },
+  {
+    "date": "2020-2-2",
+    "id": 99,
+    "borrower": "j",
+    "book": "book1",
+    "author": "autor1"
+  }
+]
