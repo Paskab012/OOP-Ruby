@@ -14,7 +14,6 @@ class App
     @rentals = BookRentals.new(@books.books, @people.people)
   end
 
-
   def start
     home
   end
@@ -32,6 +31,7 @@ class App
     gets.chomp
   end
 
+  # rubocop:disable Style/CyclomaticComplexity
   def home
     case landing
     when '1'
@@ -62,3 +62,4 @@ class App
     home
   end
 end
+# rubocop:enable Style/CyclomaticComplexity

@@ -12,14 +12,13 @@ def init
     unless File.exist?('./people.json')
 end
 
-
 def read_books
     books = []
     JSON.parse(File.read('./data/book.json')).each do |book|
       books.push(Book.new(book['title'], book['author']))
     end
     books
-  end
+end
   
   def write_books(books)
     temp = []
@@ -64,7 +63,7 @@ def read_books
                   Student.new(person['age'], person['name'], parent_permission: person['parent_permission'])
                 when 'Teacher'
                   Teacher.new(person['age'], person['specialization'], person['name'])
-                end
+               end
+           end
+       people
     end
-    people
-  end
