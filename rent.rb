@@ -1,34 +1,32 @@
-require './people'
 require './rental'
+require './people'
 require './books'
-require './initialize'
+require './data'
 require 'json'
 
-class BookRentals
+class Rent
   attr_accessor :rentals, :people, :books
 
   def initialize(books, person)
-    # @rentals = []
     @books = books
     @people = person
-    @rentals = JSON.parse(File.read('./data/rentals.json'))
+    @rentals = JSON.parse(File.read('./data/rental_file.json'))
   end
 
-  def listofrentals
-    puts 'Wait... No rental found now!' if JSON.parse(File.read('./data/rentals.json')).empty?
-    print 'Input your ID to view rentals: '
+  def rentalslist
+    puts 'No rentals has been made at the moment' if JSON.parse(File.read('./data/rental_file.json')).empty?
+    print 'To view your rental records, type your ID: '
     id = gets.chomp.to_i
-    rental = JSON.parse(File.read('./data/rentals.json')).select { |rend| rend['id'] == id }
-
+    rental = JSON.parse(File.read('./data/rental_file.json')).select { |rend| rend['id'] == id }
     if rental.empty?
-      puts 'Incorrect ID, no rental was made! try another ID'
+      puts 'No records exist for that ID'
     else
-      puts 'Those are your rental credentials : '
+      puts 'Bellow are rental records the: '
       puts ''
       rental.each_with_index do |record, index|
         puts ''
         print "#{index + 1}| Date: #{record['date']} | Borrower: #{record['borrower']}"
-        print " Requested with: \"#{record['book']}\" by #{record['author']}"
+        print " Borrowed book: \"#{record['book']}\" by #{record['author']}"
         puts ''
       end
     end
@@ -36,22 +34,19 @@ class BookRentals
 
   def create_rental
     if @books.empty? && @people.empty?
-      puts 'No books and people found in the system'
+      puts 'There are no books and people in the system'
     else
-      puts 'Input a number corresponding to the book: '
+      puts 'Please press the number corresponding to the book that you want: '
       @books.each_with_index do |book, index|
         puts "#{index + 1}) Book Title: \"#{book.title}\" | Author: #{book.author}"
       end
       number = gets.chomp.to_i
       index = number - 1
-
       puts 'PLease type your ID: '
       @people.each { |person| puts "[#{person.class}] Name: #{person.name} | Age: #{person.age} | ID: #{person.id}" }
       identity = gets.chomp.to_i
-
       individual = @people.select { |person| person.id == identity }.first
-
-      print 'Enter date[yyyy-mm-dd]: '
+      print 'Enter the date[yyyy-mm-dd]: '
       date = gets.chomp.to_s
 
       rent = Rental.new(date, @books[index], individual)
@@ -64,8 +59,8 @@ class BookRentals
       }
 
       @rentals << temp
-      File.write('./data/rentals.json', JSON.generate(@rentals))
-      puts 'The book was rent successfully'
+      File.write('./data/rental_file.json', JSON.generate(@rentals))
+      puts 'The book has been rented successfully'
     end
   end
 end

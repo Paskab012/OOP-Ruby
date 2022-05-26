@@ -1,9 +1,9 @@
 require_relative './app'
-require './initialize'
+require './data'
 require 'json'
 
 puts 'Hey! Welcome to your app!'
-init
+initialize_files
 
 def main
   app = App.new

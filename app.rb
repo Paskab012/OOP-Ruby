@@ -5,22 +5,22 @@ require './rental'
 require './student'
 require './teacher'
 require './people'
-require './book_rentals'
+require './rent'
 
 class App
   def initialize
     @books = Books.new
-    @people = Mypeople.new
-    @rentals = BookRentals.new(@books.books, @people.people)
+    @people = Modules.new
+    @rentals = Rent.new(@books.books, @people.people)
   end
 
   def start
-    home
+    selection
   end
 
-  def landing
+  def list_selections
     puts ''
-    puts "Please select a number:
+    puts "Please choose an option by selecting a number:
                 1. List all books
                 2. List all people
                 3. Create person account
@@ -32,12 +32,12 @@ class App
   end
 
   # rubocop:disable Style/CyclomaticComplexity
-  def home
-    case landing
+  def selection
+    case list_selections
     when '1'
-      @books.all_booklist
+      @books.booklist
     when '2'
-      @people.all_peoplelist
+      @people.peoplelist
     when '3'
       @people.create_person
     when '4'
@@ -45,21 +45,14 @@ class App
     when '5'
       @rentals.create_rental
     when '6'
-
       @rentals.rentalslist
-
     when '7'
-
-      puts 'Session closed! Ciao ciao!'
-
+      puts 'Thank you for using the app. Goodbye!'
       exit
-
     else
-
-      puts 'Oups! something went wrong! Input your correct credentials please...'
-
+      puts 'Invalid input. Try again'
     end
-    home
+    selection
   end
 end
 # rubocop:enable Style/CyclomaticComplexity

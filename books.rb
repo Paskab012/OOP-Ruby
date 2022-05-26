@@ -1,5 +1,5 @@
 require './book'
-require './initialize'
+require './data'
 require 'json'
 
 class Books
@@ -9,16 +9,14 @@ class Books
     @books = read_books
   end
 
-  def all_booklist
-    puts 'There is no book found in the store' if
-    @books.empty?
+  def booklist
+    puts 'There is no book found in the store!' if @books.empty?
     @books.each { |book| puts "Title: #{book.title}, Author: #{book.author}" }
   end
 
   def create_book
     print 'book title: '
     title = gets.chomp
-
     print 'book author: '
     author = gets.chomp
 
