@@ -1,4 +1,4 @@
-require 'spec_helper'
+require './spec_helper'
 
 describe Classroom do
   before :each do
