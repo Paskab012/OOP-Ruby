@@ -1,4 +1,4 @@
-require './spec_helper'
+require 'spec_helper'
 
 describe Classroom do
   before :each do
@@ -6,14 +6,14 @@ describe Classroom do
   end
 
   describe '#new' do
-    it 'takes one parameters and returns a classroom object' do
-        expect(@classroom.instance_of?(Classroom)) == true 
+    it 'should takes one parameters and returns a classroom object' do
+      expect(@classroom.instance_of?(Classroom)) == true
     end
   end
 
   describe '#label' do
-    it 'returns the correct lable' do
-        expect(@classroom.label).to eql 'Label'
+    it 'should returns the correct label' do
+      expect(@classroom.label).to eql 'Label'
     end
   end
 end

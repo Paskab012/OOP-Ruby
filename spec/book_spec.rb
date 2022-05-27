@@ -1,5 +1,5 @@
-require '../book'
-require '../student'
+require './book'
+require './student'
 
 describe Book do
   before :each do

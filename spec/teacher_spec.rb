@@ -1,4 +1,4 @@
-require '../teacher'
+require './teacher'
 
 describe Teacher do
   before :each do

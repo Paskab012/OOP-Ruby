@@ -1,8 +1,8 @@
-require './spec_helper'
-require '../student'
-require '../capitalize_decorator'
-require '../trimmer_decorator'
-require '../decorators'
+require 'spec_helper'
+require './student'
+require './capitalize_decorator'
+require './trimmer_decorator'
+require './decorator'
 
 describe Nameable do
   before :each do
