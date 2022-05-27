@@ -2,7 +2,7 @@ require './per_son'
 
 class Student < Person
   def initialize(age, name, parent_permission: true)
-    super(name, age, parent_permission: parent_permission)
+    super(age, name, parent_permission: parent_permission)
     @classroom = classroom
   end
 
@@ -15,6 +15,6 @@ class Student < Person
 
   def classroom=(classroom)
     @classroom = classroom
-    classroom.student.push(self) unless classroom.student.include?(self)
+    classroom.students.push(self) unless classroom.students.include?(self)
   end
 end
